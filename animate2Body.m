@@ -1,0 +1,9 @@
+function outVar = animate2Body( statesIn, timeIn, d0, d1, mb, mc )
+rot = @(theta) [cos(theta) -sin(theta); sin(theta) cos(theta)];
+for i = 1:length(timeIn)
+    theta = statesIn(5,i);
+    r = statesIn(7, i);
+    pos = [stateIn(3,i); statesIn(2,i)];
+    v2 = rot(theta)*[ (d1*r*mb)/(mc + mb); (d0*mb/(mc+ mb))] + pos;
+    v1 = rot(theta)*[ d1*r*mc/(mc + mb); d0*mc/(mc + mb) ] + pos;
+    arrow = v2, rot(theta)*
